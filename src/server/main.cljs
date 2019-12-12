@@ -1,5 +1,6 @@
-
-(ns server.main)
+(ns server.main
+  (:require [clojure.set :as set]
+            [clojure.string :as str]))
 
 (def value-a 1)
 
@@ -11,3 +12,12 @@
 
 (defn main! []
   (println "App loaded!"))
+
+(defn example [o]
+  (let [data (js->clj o :keywordize-keys true)]
+    (println data)
+    (clj->js data)))
+
+
+(defn generate-exports []
+  #js {:example example})
